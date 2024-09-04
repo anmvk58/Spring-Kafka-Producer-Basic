@@ -6,12 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class KeyMessageProducer {
-    public final String topicName = "multiple-partition-topic";
-
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
-
-    public void sendMessage(String key, String message) {
-        kafkaTemplate.send(topicName, key, message);
-    }
+	@Autowired
+	private KafkaTemplate<String, String> kafkaTemplate;
+	
+	public void send(String key, String value) {
+		kafkaTemplate.send("multiple-partition-topic", key, value);
+	}
 }
